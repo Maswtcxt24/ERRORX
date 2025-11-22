@@ -16,27 +16,67 @@
 
     h1 {
       text-align: center;
-      margin-top: 40px;
-      font-size: 35px;
+      margin-top: 25px;
+      font-size: 32px;
       letter-spacing: 3px;
     }
 
-    /* Popup Background */
+    .container {
+      width: 90%;
+      max-width: 400px;
+      margin: auto;
+      margin-top: 20px;
+      background: #111;
+      padding: 20px;
+      border-radius: 10px;
+      border: 1px solid #333;
+      box-shadow: 0 0 8px #00ffee;
+      transition: opacity 0.4s ease, transform 0.4s ease;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0;
+      border-radius: 8px;
+      border: none;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      background: #00ffee;
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      margin-top: 8px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      opacity: 0.9;
+    }
+
+    .login-btn {
+      margin-top: 15px;
+      background: #0077ff;
+    }
+
+    /* POPUP */
     .popup-bg {
       position: fixed;
       top: 0;
       left: 0;
       height: 100%;
       width: 100%;
-      background: rgba(0, 0, 0, 0.7);
-      backdrop-filter: blur(4px);
-      display: flex;
+      background: rgba(0,0,0,0.8);
+      display: none;
       align-items: center;
       justify-content: center;
       z-index: 999;
     }
 
-    /* Popup Box */
     .popup-box {
       background: #111;
       padding: 25px;
@@ -45,25 +85,19 @@
       border-radius: 15px;
       text-align: center;
       border: 1px solid #333;
-      box-shadow: 0 0 10px #00ffea;
+      box-shadow: 0 0 10px #00ffee;
       animation: popup 0.4s ease;
     }
 
     @keyframes popup {
-      from { transform: scale(0.7); opacity: 0; }
+      from { transform: scale(0.6); opacity: 0; }
       to { transform: scale(1); opacity: 1; }
-    }
-
-    .popup-box h2 {
-      font-size: 22px;
-      margin-bottom: 10px;
-      color: #00ffea;
     }
 
     .popup-box a {
       display: block;
       margin-top: 15px;
-      background: #00ffea;
+      background: #00ffee;
       padding: 10px;
       border-radius: 8px;
       font-weight: bold;
@@ -72,45 +106,96 @@
     }
 
     .close-btn {
-      margin-top: 15px;
-      background: #333;
+      margin-top: 12px;
       padding: 8px;
-      border-radius: 6px;
-      display: inline-block;
+      border-radius: 8px;
+      background: #333;
       cursor: pointer;
-      color: #fff;
       border: 1px solid #555;
     }
+
+    /* LOGIN FORM HIDE */
+    #login-box {
+      display: none;
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+
+    /* Fade-in animation */
+    .fade-in {
+      display: block;
+      opacity: 1 !important;
+      transform: translateY(0) !important;
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
   </style>
+
 </head>
 <body>
 
-  <h1>ERRORX</h1>
+<h1>ERRORX</h1>
 
-  <!-- Popup -->
-  <div class="popup-bg" id="popup">
-    <div class="popup-box">
-      <h2>TOOL MADE BY<br> ABDULLAH SULEMAN</h2>
+<!-- REGISTER BOX -->
+<div class="container" id="register-box">
+  <h2>Register</h2>
 
-      <a href="https://whatsapp.com/channel/0029Vb5eufGInlqIVg1R3U0Z" target="_blank">
-        Join WhatsApp Channel
-      </a>
+  <input type="text" placeholder="Full Name" autocomplete="name" />
+  <input type="email" placeholder="Email" autocomplete="email" />
+  <input type="password" placeholder="Password" autocomplete="new-password" />
 
-      <div class="close-btn" onclick="closePopup()">Close</div>
-    </div>
+  <button type="button">Register</button>
+
+  <button type="button" class="login-btn" onclick="openPopup()">Go to Login</button>
+</div>
+
+<!-- POPUP -->
+<div class="popup-bg" id="popup">
+  <div class="popup-box">
+    <h2>TOOL MADE BY<br> ABDULLAH SULEMAN</h2>
+
+    <a href="https://whatsapp.com/channel/0029Vb5eufGInlqIVg1R3U0Z" target="_blank">
+      Join WhatsApp Channel
+    </a>
+
+    <div class="close-btn" onclick="closePopup()">Close</div>
   </div>
+</div>
 
-  <script>
-    // Open popup immediately
-    window.onload = function () {
-      document.getElementById("popup").style.display = "flex";
-    };
+<!-- LOGIN BOX -->
+<div class="container" id="login-box">
+  <h2>Login</h2>
 
-    // Close popup
-    function closePopup() {
-      document.getElementById("popup").style.display = "none";
+  <input type="email" placeholder="Email" autocomplete="email" />
+  <input type="password" placeholder="Password" autocomplete="current-password" />
+
+  <button type="button">Login</button>
+</div>
+
+<script>
+  function openPopup() {
+    document.getElementById("popup").style.display = "flex";
+  }
+
+  function closePopup() {
+    document.getElementById("popup").style.display = "none";
+
+    // Hide register form
+    const register = document.getElementById("register-box");
+    const login = document.getElementById("login-box");
+
+    register.style.display = "none";
+
+    // Show login form with fade-in animation
+    login.classList.add("fade-in");
+  }
+
+  // Close popup by clicking outside the box
+  document.getElementById("popup").addEventListener("click", function(e){
+    if(e.target === this){
+      closePopup();
     }
-  </script>
+  });
+</script>
 
 </body>
 </html>
