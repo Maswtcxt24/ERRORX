@@ -1,207 +1,281 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ERRORX</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ERRORX - Create Account</title>
 
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      background: #000;
-      color: white;
-      font-family: Arial, sans-serif;
-    }
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
 
-    h1 {
-      text-align: center;
-      margin-top: 25px;
-      font-size: 32px;
-      letter-spacing: 3px;
-    }
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    .container {
-      width: 90%;
-      max-width: 400px;
-      margin: auto;
-      margin-top: 20px;
-      background: #111;
-      padding: 20px;
-      border-radius: 10px;
-      border: 1px solid #333;
-      box-shadow: 0 0 8px #00ffee;
-      transition: opacity 0.4s ease, transform 0.4s ease;
-    }
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+        }
 
-    input {
-      width: 100%;
-      padding: 10px;
-      margin: 8px 0;
-      border-radius: 8px;
-      border: none;
-    }
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+            padding: 20px;
+        }
 
-    button {
-      width: 100%;
-      padding: 12px;
-      background: #00ffee;
-      border: none;
-      border-radius: 8px;
-      font-weight: bold;
-      margin-top: 8px;
-      cursor: pointer;
-      transition: 0.3s;
-    }
+        /* Form Wrapper */
+        .form-wrapper {
+            width: 420px;
+            background-color: #1a2930;
+            border-radius: 16px;
+            padding: 40px 50px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+        }
 
-    button:hover {
-      opacity: 0.9;
-    }
+        .form-header h1 {
+            color: #f4f4f4;
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
 
-    .login-btn {
-      margin-top: 15px;
-      background: #0077ff;
-    }
+        .form-header p {
+            color: #a0a0a0;
+            font-size: 14px;
+            margin-bottom: 30px;
+        }
 
-    /* POPUP */
-    .popup-bg {
-      position: fixed;
-      top: 0;
-      left: 0;
-      height: 100%;
-      width: 100%;
-      background: rgba(0,0,0,0.8);
-      display: none;
-      align-items: center;
-      justify-content: center;
-      z-index: 999;
-    }
+        /* Form */
+        .form-group {
+            position: relative;
+            margin-bottom: 25px;
+        }
 
-    .popup-box {
-      background: #111;
-      padding: 25px;
-      width: 85%;
-      max-width: 350px;
-      border-radius: 15px;
-      text-align: center;
-      border: 1px solid #333;
-      box-shadow: 0 0 10px #00ffee;
-      animation: popup 0.4s ease;
-    }
+        .form-input {
+            width: 100%;
+            padding: 14px 20px 14px 45px;
+            background-color: #263841;
+            border: 1px solid #3a4c55;
+            border-radius: 10px;
+            color: #ffffff;
+            font-size: 16px;
+        }
 
-    @keyframes popup {
-      from { transform: scale(0.6); opacity: 0; }
-      to { transform: scale(1); opacity: 1; }
-    }
+        .form-input::placeholder {
+            color: #788a96;
+        }
 
-    .popup-box a {
-      display: block;
-      margin-top: 15px;
-      background: #00ffee;
-      padding: 10px;
-      border-radius: 8px;
-      font-weight: bold;
-      text-decoration: none;
-      color: #000;
-    }
+        .input-icon {
+            position: absolute;
+            top: 50%;
+            left: 15px;
+            transform: translateY(-50%);
+            color: #788a96;
+        }
 
-    .close-btn {
-      margin-top: 12px;
-      padding: 8px;
-      border-radius: 8px;
-      background: #333;
-      cursor: pointer;
-      border: 1px solid #555;
-    }
+        .submit-btn {
+            width: 100%;
+            padding: 15px;
+            background: #00a8e8;
+            border: none;
+            border-radius: 10px;
+            color: white;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 10px;
+        }
 
-    /* LOGIN FORM HIDE */
-    #login-box {
-      display: none;
-      opacity: 0;
-      transform: translateY(-20px);
-    }
+        .submit-btn:hover {
+            background: #0090c7;
+            transform: translateY(-3px);
+        }
 
-    /* Fade-in animation */
-    .fade-in {
-      display: block;
-      opacity: 1 !important;
-      transform: translateY(0) !important;
-      transition: opacity 0.5s ease, transform 0.5s ease;
-    }
-  </style>
+        .login-link {
+            margin-top: 25px;
+            color: #a0a0a0;
+            font-size: 14px;
+        }
 
+        .login-link a {
+            color: #00a8e8;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        /* Popup (top msg) */
+        .popup {
+            position: fixed;
+            top: -100px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #e74c3c;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 10px;
+            transition: top 0.5s ease-in-out;
+            z-index: 1000;
+            font-weight: 500;
+        }
+
+        .popup.show {
+            top: 20px;
+        }
+
+        /* Simple One-Link Ad Popup */
+        #ad-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.6);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+        }
+
+        .ad-container {
+            background: white;
+            width: 90%;
+            max-width: 360px;
+            padding: 25px;
+            text-align: center;
+            border-radius: 12px;
+            animation: fadeIn 0.4s ease;
+            position: relative;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to   { opacity: 1; transform: scale(1); }
+        }
+
+        #close-ad-btn {
+            position: absolute;
+            top: 8px;
+            right: 10px;
+            background: #ddd;
+            border: none;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .ad-button {
+            display: block;
+            background: #128C7E;
+            padding: 12px;
+            margin-top: 20px;
+            color: white;
+            font-size: 17px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+    </style>
 </head>
 <body>
 
-<h1>ERRORX</h1>
+    <!-- Registration Form -->
+    <div class="form-wrapper">
+        <div class="form-header">
+            <h1>ERRORX</h1>
+            <p>Create Your Account</p>
+        </div>
 
-<!-- REGISTER BOX -->
-<div class="container" id="register-box">
-  <h2>Register</h2>
+        <form id="registerForm">
 
-  <input type="text" placeholder="Full Name" autocomplete="name" />
-  <input type="email" placeholder="Email" autocomplete="email" />
-  <input type="password" placeholder="Password" autocomplete="new-password" />
+            <div class="form-group">
+                <input type="text" id="username" class="form-input" placeholder="Username">
+                <i class="input-icon fas fa-user"></i>
+            </div>
 
-  <!-- Register button now opens popup -->
-  <button type="button" onclick="registerClick()">Register</button>
+            <div class="form-group">
+                <input type="email" id="email" class="form-input" placeholder="Email">
+                <i class="input-icon fas fa-envelope"></i>
+            </div>
 
-  <button type="button" class="login-btn" onclick="openPopup()">Go to Login</button>
-</div>
+            <div class="form-group">
+                <input type="password" id="password" class="form-input" placeholder="Password">
+                <i class="input-icon fas fa-lock"></i>
+            </div>
 
-<!-- POPUP -->
-<div class="popup-bg" id="popup">
-  <div class="popup-box">
-    <h2>TOOL MADE BY<br> ABDULLAH SULEMAN</h2>
+            <div class="form-group">
+                <input type="password" id="confirm_password" class="form-input" placeholder="Confirm Password">
+                <i class="input-icon fas fa-check-circle"></i>
+            </div>
 
-    <a href="https://whatsapp.com/channel/0029Vb5eufGInlqIVg1R3U0Z" target="_blank">
-      Join WhatsApp Channel
-    </a>
+            <button type="submit" class="submit-btn">Register</button>
+        </form>
 
-    <div class="close-btn" onclick="closePopup()">Close</div>
-  </div>
-</div>
+        <div class="login-link">
+            <p>Already have an account? <a href="#">Login Now</a></p>
+        </div>
+    </div>
 
-<!-- LOGIN BOX -->
-<div class="container" id="login-box">
-  <h2>Login</h2>
+    <!-- Popup -->
+    <div id="popup" class="popup"></div>
 
-  <input type="email" placeholder="Email" autocomplete="email" />
-  <input type="password" placeholder="Password" autocomplete="current-password" />
+    <!-- One Link Ad Popup -->
+    <div id="ad-overlay">
+        <div class="ad-container">
+            <button id="close-ad-btn">×</button>
 
-  <button type="button">Login</button>
-</div>
+            <h3>ERRORX</h3>
+            <p>TOOL MADE BY <b>ABDULLAH SULEMAN</b></p>
 
-<script>
-  function openPopup() {
-    document.getElementById("popup").style.display = "flex";
-  }
+            <a href="https://whatsapp.com/channel/0029Vb5eufGInlqIVg1R3U0Z" 
+               class="ad-button">
+               Join ERRORX WhatsApp Channel
+            </a>
+        </div>
+    </div>
 
-  function registerClick() {
-    // Same behavior as Go to Login: open popup
-    openPopup();
-  }
+    <script>
+        // Close Ad Button
+        document.getElementById("close-ad-btn").onclick = () => {
+            document.getElementById("ad-overlay").style.display = "none";
+        };
 
-  function closePopup() {
-    document.getElementById("popup").style.display = "none";
+        // popup
+        function showPopup(msg, type="error") {
+            const popup = document.getElementById("popup");
+            popup.textContent = msg;
+            popup.style.background = type === "success" ? "#2ecc71" : "#e74c3c";
+            popup.classList.add("show");
 
-    // Hide register form
-    const register = document.getElementById("register-box");
-    const login = document.getElementById("login-box");
+            setTimeout(() => popup.classList.remove("show"), 3000);
+        }
 
-    register.style.display = "none";
+        // Fake Registration (Local Storage)
+        document.getElementById("registerForm").addEventListener("submit", function(e) {
+            e.preventDefault();
 
-    // Show login form with fade-in animation
-    login.classList.add("fade-in");
-  }
+            let u = username.value.trim();
+            let eMail = email.value.trim();
+            let p = password.value;
+            let cp = confirm_password.value;
 
-  // Close popup by clicking outside the box
-  document.getElementById("popup").addEventListener("click", function(e){
-    if(e.target === this){
-      closePopup();
-    }
-  });
-</script>
+            if (!u || !eMail || !p || !cp) return showPopup("All fields required!");
+            if (p !== cp) return showPopup("Passwords do not match!");
+
+            localStorage.setItem("errorx_user", JSON.stringify({ u, eMail, p }));
+
+            showPopup("Account Created Successfully!", "success");
+        });
+    </script>
 
 </body>
 </html>
