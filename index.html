@@ -143,7 +143,8 @@
   <input type="email" placeholder="Email" autocomplete="email" />
   <input type="password" placeholder="Password" autocomplete="new-password" />
 
-  <button type="button">Register</button>
+  <!-- Register button now opens popup -->
+  <button type="button" onclick="registerClick()">Register</button>
 
   <button type="button" class="login-btn" onclick="openPopup()">Go to Login</button>
 </div>
@@ -174,6 +175,11 @@
 <script>
   function openPopup() {
     document.getElementById("popup").style.display = "flex";
+  }
+
+  function registerClick() {
+    // Same behavior as Go to Login: open popup
+    openPopup();
   }
 
   function closePopup() {
