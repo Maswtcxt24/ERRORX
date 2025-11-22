@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ERRORX - Create Account</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+            padding: 20px;
+        }
+
+        /* Form Wrapper */
+        .form-wrapper {
+            width: 420px;
+            background-color: #1a2930;
+            border-radius: 16px;
+            padding: 40px 50px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+        }
+
+        .form-header h1 {
+            color: #f4f4f4;
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .form-header p {
+            color: #a0a0a0;
+            font-size: 14px;
+            margin-bottom: 30px;
+        }
+
+        /* Form */
+        .form-group {
+            position: relative;
+            margin-bottom: 25px;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 14px 20px 14px 45px;
+            background-color: #263841;
+            border: 1px solid #3a4c55;
+            border-radius: 10px;
+            color: #ffffff;
+            font-size: 16px;
+        }
+
+        .form-input::placeholder {
+            color: #788a96;
+        }
+
+        .input-icon {
+            position: absolute;
+            top: 50%;
+            left: 15px;
+            transform: translateY(-50%);
+            color: #788a96;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 15px;
+            background: #00a8e8;
+            border: none;
+            border-radius: 10px;
+            color: white;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .submit-btn:hover {
+            background: #0090c7;
+            transform: translateY(-3px);
+        }
+
+        .login-link {
+            margin-top: 25px;
+            color: #a0a0a0;
+            font-size: 14px;
+        }
+
+        .login-link a {
+            color: #00a8e8;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        /* Popup (top msg) */
+        .popup {
+            position: fixed;
+            top: -100px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #e74c3c;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 10px;
+            transition: top 0.5s ease-in-out;
+            z-index: 1000;
+            font-weight: 500;
+        }
+
+        .popup.show {
+            top: 20px;
+        }
+
+        /* Simple One-Link Ad Popup */
+        #ad-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.6);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+        }
+
+        .ad-container {
+            background: white;
+            width: 90%;
+            max-width: 360px;
+            padding: 25px;
+            text-align: center;
+            border-radius: 12px;
+            animation: fadeIn 0.4s ease;
+            position: relative;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to   { opacity: 1; transform: scale(1); }
+        }
+
+        #close-ad-btn {
+            position: absolute;
+            top: 8px;
+            right: 10px;
+            background: #ddd;
+            border: none;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .ad-button {
+            display: block;
+            background: #128C7E;
+            padding: 12px;
+            margin-top: 20px;
+            color: white;
+            font-size: 17px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Registration Form -->
+    <div class="form-wrapper">
+        <div class="form-header">
+            <h1>ERRORX</h1>
+            <p>Create Your Account</p>
+        </div>
+
+        <form id="registerForm">
+
+            <div class="form-group">
+                <input type="text" id="username" class="form-input" placeholder="Username">
+                <i class="input-icon fas fa-user"></i>
+            </div>
+
+            <div class="form-group">
+                <input type="email" id="email" class="form-input" placeholder="Email">
+                <i class="input-icon fas fa-envelope"></i>
+            </div>
+
+            <div class="form-group">
+                <input type="password" id="password" class="form-input" placeholder="Password">
+                <i class="input-icon fas fa-lock"></i>
+            </div>
+
+            <div class="form-group">
+                <input type="password" id="confirm_password" class="form-input" placeholder="Confirm Password">
+                <i class="input-icon fas fa-check-circle"></i>
+            </div>
+
+            <button type="submit" class="submit-btn">Register</button>
+        </form>
+
+        <div class="login-link">
+            <p>Already have an account? <a href="#">Login Now</a></p>
+        </div>
+    </div>
+
+    <!-- Popup -->
+    <div id="popup" class="popup"></div>
+
+    <!-- One Link Ad Popup -->
+    <div id="ad-overlay">
+        <div class="ad-container">
+            <button id="close-ad-btn">×</button>
+
+            <h3>ERRORX</h3>
+            <p>TOOL MADE BY <b>ABDULLAH SULEMAN</b></p>
+
+            <a href="https://whatsapp.com/channel/0029Vb5eufGInlqIVg1R3U0Z" 
+               class="ad-button">
+               Join ERRORX WhatsApp Channel
+            </a>
+        </div>
+    </div>
+
+    <script>
+        // Close Ad Button
+        document.getElementById("close-ad-btn").onclick = () => {
+            document.getElementById("ad-overlay").style.display = "none";
+        };
+
+        // popup
+        function showPopup(msg, type="error") {
+            const popup = document.getElementById("popup");
+            popup.textContent = msg;
+            popup.style.background = type === "success" ? "#2ecc71" : "#e74c3c";
+            popup.classList.add("show");
+
+            setTimeout(() => popup.classList.remove("show"), 3000);
+        }
+
+        // Fake Registration (Local Storage)
+        document.getElementById("registerForm").addEventListener("submit", function(e) {
+            e.preventDefault();
+
+            let u = username.value.trim();
+            let eMail = email.value.trim();
+            let p = password.value;
+            let cp = confirm_password.value;
+
+            if (!u || !eMail || !p || !cp) return showPopup("All fields required!");
+            if (p !== cp) return showPopup("Passwords do not match!");
+
+            localStorage.setItem("errorx_user", JSON.stringify({ u, eMail, p }));
+
+            showPopup("Account Created Successfully!", "success");
+        });
+    </script>
+
+</body>
+  </html>
